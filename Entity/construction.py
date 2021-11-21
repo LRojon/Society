@@ -69,7 +69,13 @@ class Construction:
             self.nbH = 0
             self.type = TypeConstruction(type)
 
-    def toString(self):
+    def isFull(self) -> bool:
+        return self.nbH == self.nbHMax
+    
+    def use(self) -> Dict[str, int]:
+        pass
+
+    def toString(self) -> str:
         ret = "uid : " + self.uid + "\n"
         ret += "position : " + str(self.position.x) + \
             ", " + str(self.position.y) + "\n"
