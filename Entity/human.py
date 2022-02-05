@@ -6,6 +6,7 @@ import uuid
 sys.path.append('..')
 
 from utils import Point, rand, generateName
+#from society import Society
 
 
 
@@ -30,8 +31,9 @@ class Need :
 
 class Human :
 
-    def __init__(self, parents : list = []) -> None:
+    def __init__(self, parents : list = [], society = None) -> None:
         self.uid = str(uuid.uuid4())
+        self.society = society
         self.parents = parents
         self.name = self.generateName()
         self.nbTurn = 0
@@ -59,8 +61,8 @@ class Human :
             output.append(need)
         return output
 
-    # False si vivant
-    def nexTurn(self) -> bool:
+    # False si vivant 
+    def nextTurn(self) -> bool:
         return False
 
     # Suivant proba et besoins insert H in S
