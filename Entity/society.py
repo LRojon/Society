@@ -7,6 +7,17 @@ sys.path.append('..')
 
 from utils import generateName, rand, Point
 
+'''
+V = Vide
+R = Route
+H = Hopital
+F = Food
+W = Water
+C = Construction
+S = Social
+U = Unknow
+'''
+
 
 map_society = [
     ["V", "V", "V", "V", "V", "V", "V"],
@@ -21,26 +32,50 @@ map_society = [
 
 class Society:
 
+    # Initialisation
     def __init__(self, name: str = "", nbInitH: int = 5) -> None:
         self.name = name if name != "" else generateName(5)
         self.nbInitH = nbInitH
         self.alive = list()
-        for i in range(nbInitH):
-            self.alive.append(Human())
+        for _ in range(nbInitH):
+            self.alive.append(Human([] , self))
         self.dead = list()
         self.origin = Point()
         self.map = []
+        self.needToBuilding = {}
 
+    # Génération d'une map qui fait matcher les besoins avec la position des batiments qui le remplissent
+    def generateNeedToBuilding(self) -> dict:
+        dic = {}
+        map = self.map
+        
+        for i in len(map):
+            for j in len(map[0]):
+                typeBuilding = str(type(map[i][j]))
+                if typeBuilding != "Road" and typeBuilding != "Construction":
+                    dic[typeBuilding].append(map[i][j].position)
+
+        return dic
+
+    # TODO
+    # Mise à disposition de la map global dans la society
     def updateMap(self) -> None:
+        # update map
+        self.needToBuilding = self.generateNeedToBuilding()
         pass
 
+    # TODO
+    # Déroulement du tour de la society et des humains
     def nextTurn(self) -> None:
         pass
 
+    # Ecriture du nom des humains vivant de la society
     def printHumans(self):
         for i in self.alive:
             print("My name is ", i.name)
-                
+
+    
+    # Calcage de la society sur la map entière avec point central et dimension            
     def genMap(self,  originX: int, originY: int, width: int = 7, height: int = 7) -> None:
         height_s = len(map_society)
         width_s = len(map_society[0])
@@ -57,5 +92,5 @@ class Society:
             print("ERROR")
 
 
-s = Society()
+s = Society("Test")
 s.genMap(3,3)
