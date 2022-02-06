@@ -1,5 +1,6 @@
 import random
 import json
+import curses
 from numpy.random import default_rng
 
 class Point :
