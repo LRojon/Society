@@ -6,10 +6,9 @@ from pathfinding.core.grid import Grid
 from pathfinding.finder.a_star import AStarFinder
 
 # setting path
-sys.path.append('..')
+
 
 from utils import Point, rand, generateName
-#from society import Society
 
 
 
@@ -97,7 +96,7 @@ class Human :
             self.needs[i] = self.needs[i] + need_update[i]
 
     # Transforme la map en grille binaire (0 = obstacle)
-    def transGrille(self) -> list(list):
+    def transGrille(self) -> list:
         map = deepcopy(self.society.map)
         for i in range(len(map)):
             for j in range(len(map[i])):

@@ -1,10 +1,9 @@
 import sys
 
-from human import Human
-
 # setting path
 sys.path.append('..')
 
+from Entity.human import Human
 from utils import generateName, rand, Point
 
 '''
@@ -72,7 +71,7 @@ class Society:
     # Ecriture du nom des humains vivant de la society
     def printHumans(self):
         for i in self.alive:
-            print("My name is ", i.name)
+            print("My name is ", i.name, " | My position is [", i.position.x , ",", i.position.y, "]")
 
     
     # Calcage de la society sur la map entière avec point central et dimension            
@@ -91,6 +90,10 @@ class Society:
         else:
             print("ERROR")
 
-
-s = Society("Test")
-s.genMap(3,3)
+    def printMap(self):
+        map = self.map
+        for i in range(len(map)):
+            s = ""
+            for j in range(len(map[0])):
+                s = s + " " + map[i][j]
+            print(s)

@@ -2,4 +2,5 @@
     "[python]": {
         "editor.defaultFormatter": "ms-vsliveshare.vsliveshare",
     },
+    "editor.showFoldingControls": "always",
 }

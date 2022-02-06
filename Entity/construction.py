@@ -40,10 +40,11 @@ class TypeConstruction:
 
 
 class Construction:
-    def __init__(self, type: str, x: int, y: int, cost: Dict[str, int]) -> None:
+    def __init__(self, type: str, x: int, y: int, value : int, cost: Dict[str, int]) -> None:
         self.uid = str(uuid.uuid4())
         self.position = Point(x, y)
         self.cost = cost
+        self.value = value
         if type == "Food":
             self.nbHMax = 5
             self.nbH = 0

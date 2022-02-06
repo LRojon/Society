@@ -75,7 +75,7 @@ class World:
     def updateMap() -> None:
         # Fusionne les map des S dans self.map
 ```
-### Construction
+## Construction
 ```python
 class TypeConstruction:
     def __init__(type : str) -> None:
@@ -105,7 +105,7 @@ class Society:
     def printHumans() -> None: # ! Déprécié !
         # Affiche le nom de tous les H de la S
 ```
-### Human
+## Human
 ```python
 class Need:
     def __init__(name : str, nbMax : int = 100, threshold : int = 25) -> None:
