@@ -33,40 +33,18 @@ class World:
         #curses.curs_set(0)
         curses.start_color()
         curses.use_default_colors()
-        for i in range(0, curses.COLORS):
+
+        curses.init_pair(1  , curses.COLOR_BLACK,   curses.COLOR_WHITE)
+        for i in range(1, 255):
             curses.init_pair(i + 1, i, -1)
-        '''
-        COLOR_BLACK =           0
-        COLOR_WHITE =           1
-        COLOR_FOOD =            2
-        COLOR_WATER =           3
-        COLOR_SOCIAL =          4
-        COLOR_HEALTH =          5
-        COLOR_CONSTRUCTION =    6
-        COLOR_ROAD =            7
-        curses.init_color(COLOR_BLACK       ,   0,      0,      0   )
-        curses.init_color(COLOR_WHITE       ,   1000,   1000,   1000)
-        curses.init_color(COLOR_FOOD        ,   1000,   500,    0   )
-        curses.init_color(COLOR_WATER       ,   0,      0,      1000)
-        curses.init_color(COLOR_SOCIAL      ,   976,    894,    717 )
-        curses.init_color(COLOR_HEALTH      ,   0,   1000,      1000   )
-        curses.init_color(COLOR_CONSTRUCTION,   500,    500,    500 )
-        curses.init_color(COLOR_ROAD        ,   250,    250,    250 )
-        HUMAN =         1
-        FOOD =          2
-        WATER =         3
-        SOCIAL =        4
-        HEALTH =        5
-        CONSTRUCTION =  6
-        ROAD =          7
-        curses.init_pair(HUMAN          , COLOR_BLACK,          COLOR_WHITE)
-        curses.init_pair(FOOD           , COLOR_FOOD,           COLOR_BLACK)
-        curses.init_pair(WATER          , COLOR_WATER,          COLOR_BLACK)
-        curses.init_pair(SOCIAL         , COLOR_SOCIAL,         COLOR_BLACK)
-        curses.init_pair(HEALTH         , COLOR_HEALTH,         COLOR_BLACK)
-        curses.init_pair(CONSTRUCTION   , COLOR_CONSTRUCTION,   COLOR_BLACK)
-        curses.init_pair(ROAD           , COLOR_ROAD,           COLOR_BLACK)
-'''
+        HUMAN = 0
+        FOOD = 95
+        WATER = 10
+        SOCIAL = 211
+        HEALTH = 197
+        CONSTRUCTION = 247
+        ROAD = 241
+        EMPTY = 233
         num_rows, num_cols = screen.getmaxyx()
         
         #exit()
@@ -83,7 +61,6 @@ class World:
 
         curses.napms(2000)
         curses.endwin()
-        pass
     
     def nextTurn(self) -> None:
         pass
@@ -91,18 +68,3 @@ class World:
     # Fusionne les map des S dans self.map
     def updateMap(self) -> None:
         pass
-
-def main(stdscr):
-    curses.start_color()
-    curses.use_default_colors()
-    for i in range(0, curses.COLORS):
-        curses.init_pair(i + 1, i, -1)
-    try:
-        for i in range(0, 255):
-            stdscr.addstr(str(i), curses.color_pair(i))
-    except curses.ERR:
-        # End of screen reached
-        pass
-    stdscr.getch()
-
-curses.wrapper(main)
