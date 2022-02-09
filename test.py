@@ -8,8 +8,6 @@ s.printHumans()
 '''
 # ╬╩╦╣╠╝╚╗╔║═
 import curses
-from operator import le
-from turtle import right
 
 map_society = [
     ["V", "V", "V", "V", "V", "V", "V"],
